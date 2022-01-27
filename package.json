@@ -1,0 +1,28 @@
+{
+  "name": "imageparsing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "image_saver.js",
+  "scripts": {
+    "start": "babel-node image_saver.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.25.0",
+    "blob": "^0.1.0",
+    "file-saver": "^2.0.5",
+    "filereader": "^0.10.3",
+    "https": "^1.0.0",
+    "jimp": "^0.16.1",
+    "node-blob": "^0.0.2",
+    "node-fetch": "^3.2.0",
+    "request": "^2.88.2",
+    "save-file": "^2.3.1",
+    "tesseract.js": "^2.1.5"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
+}
