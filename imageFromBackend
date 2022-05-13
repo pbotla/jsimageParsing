@@ -1,0 +1,37 @@
+addEventListener("fetch", (event) => event.respondWith(handleRequest(event)));
+
+async function handleRequest(event) {
+  // Get the client request.
+  let req = event.request;
+
+  // Filter requests that have unexpected methods.
+  if (!["HEAD", "GET"].includes(req.method)) {
+    return new Response("This method is not allowed", {
+      status: 405,
+    });
+  }
+
+  let url = new URL(req.url);
+
+  // If request is to the `/` path...
+  if (url.pathname == "/") {
+
+    let upstreamRequest = new Request("https://imageparsing.infiniteanalytics.com/", {
+    method: "GET",
+    backend: "backendserver_dns",
+    headers: {
+      "Authorization": "Basic b2ZmYmVAdC1mQHN0bHktMDQwNDIyOmhWWkIjVk5ReWdRZ3h4ZHJAcEpza1JHU2lxTkNJT3B0QXk0NGlJb2hObjN3emZaNjZ0cEVscENQZzl3UmFyMA=="}
+  });
+    var backendres = await fetch(upstreamRequest, {
+      backend: "backendserver_dns",
+    });
+
+    
+    return backendres;
+       }
+
+  // Catch all other requests and return a 404.
+  return new Response("The page you requested could not be found", {
+    status: 404,
+  });
+}
